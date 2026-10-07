@@ -1,4 +1,5 @@
-# Large data — never commit
+
+# Large sequencing and analysis data — never commit
 ref/
 db/
 bed/
@@ -6,13 +7,29 @@ samples/
 results/
 tmp/
 final_reports/
+
+# Sequencing files
+*.fastq
 *.fastq.gz
+*.fq
+*.fq.gz
+
+# Alignment files
+*.sam
 *.bam
 *.bai
+*.cram
+*.crai
+
+# Variant files
+*.vcf
 *.vcf.gz
 *.vcf.gz.tbi
+*.vcf.tbi
+*.bcf
+*.bcf.csi
 
-# Runtime / local
+# Runtime / local files
 .snakemake/
 __pycache__/
 *.pyc
