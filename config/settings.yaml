@@ -1,0 +1,48 @@
+# Targeted NGS somatic variant pipeline
+# Public example configuration.
+# Supply reference files, target BED, and annotation databases locally.
+
+# ---- Input/reference paths ----
+reference: ref/hg19.fa
+bed: bed/target_regions.hg19.bed
+
+# ---- Annotation/resource databases ----
+snpeff_db: GRCh37.p13
+snpeff_datadir: db/snpeff_data
+clinvar: db/clinvar/clinvar.chr.vcf.gz
+germline_resource: db/mutect2/af-only-gnomad.hg19.vcf.gz
+civic_variants: db/civic/variant_summaries.tsv
+civic_evidence: db/civic/clinical_evidence_summaries.tsv
+
+# ---- Temporary files ----
+tmp_dir: tmp
+
+# ---- Compute ----
+threads: 6
+java_mem_gb: 6
+
+# ---- Example QC/reporting thresholds ----
+# These are configurable examples and must be validated
+# against the laboratory's assay/SOP before clinical use.
+thresholds:
+  lod_snv_vaf: 0.05
+  lod_indel_vaf: 0.10
+  min_depth: 100
+  min_alt_reads: 5
+  min_pct_100x: 90
+  min_q30_pct: 80
+  max_duplicate_pct: 50
+  low_conf_vaf: 0.10
+  low_conf_alt_reads: 10
+
+# ---- Analysis scope ----
+# CNV and fusion analysis are not implemented/validated
+# in this example workflow.
+cnv: not_assessed
+fusions: not_assessed
+
+# Reference annotation
+mane: db/mane/MANE.GRCh38.v1.5.summary.txt.gz
+
+# Generic panel description
+panel_name: "Targeted DNA gene panel"

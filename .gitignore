@@ -1,0 +1,27 @@
+# Large data — never commit
+ref/
+db/
+bed/
+samples/
+results/
+tmp/
+final_reports/
+*.fastq.gz
+*.bam
+*.bai
+*.vcf.gz
+*.vcf.gz.tbi
+
+# Runtime / local
+.snakemake/
+__pycache__/
+*.pyc
+*.log
+*.dryrun.log
+.DS_Store
+
+# Keep empty directories if needed
+!ref/.gitkeep
+!db/.gitkeep
+!bed/.gitkeep
+!samples/.gitkeep
