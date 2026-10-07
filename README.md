@@ -12,54 +12,21 @@ The pipeline processes paired-end FASTQ files through quality control, read prep
 
 ## Workflow
 
-```text
-Paired-end FASTQ
-       |
-       v
-  FastQC / fastp
-       |
-       v
-    BWA-MEM
-       |
-       v
- BAM Processing
-       |
-       +----------------------+
-       |                      |
-       v                      v
-     Sort              MarkDuplicates
-       |                      |
-       +----------+-----------+
-                  |
-                  v
-         Target Coverage QC
-                  |
-                  v
-             GATK Mutect2
-                  |
-       +----------+-----------+
-       |          |           |
-       v          v           v
- LearnRead   GetPileup    Calculate
- Orientation  Summaries   Contamination
- Model
-       |          |           |
-       +----------+-----------+
-                  |
-                  v
-         FilterMutectCalls
-                  |
-                  v
-          VCF Normalization
-                  |
-                  v
-     SnpEff / ClinVar / CIViC
-                  |
-                  v
-      Variant + Coverage Tables
-                  |
-                  v
-       Automated QC Worksheet
+```mermaid
+flowchart TD
+    A[Paired-end FASTQ] --> B[FastQC + fastp]
+    B --> C[BWA-MEM Alignment]
+    C --> D[Sort + MarkDuplicates]
+    D --> E[Alignment & Coverage QC]
+    E --> F[Mutect2 Tumor-only Calling]
+    F --> G[Orientation Bias + Contamination]
+    G --> H[FilterMutectCalls]
+    H --> I[bcftools Normalization]
+    I --> J[SnpEff Annotation]
+    J --> K[ClinVar + CIViC + MANE]
+    K --> L[Variant Table]
+    L --> M[Automated QC Worksheet]
+    M --> N[Provenance JSON]
 ```
 
 ---
