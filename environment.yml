@@ -1,0 +1,22 @@
+name: somatic
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  - python=3.11
+  - fastp
+  - fastqc
+  - bwa
+  - samtools
+  - bcftools
+  - htslib
+  - gatk4
+  - mosdepth
+  - bedtools
+  - snakemake
+  - pandas
+  - pyyaml
+  - python-docx
+  - pysam
