@@ -6,7 +6,7 @@ The pipeline processes targeted sequencing data from **paired-end FASTQ files** 
 
 **Scope:** SNV/indel calling, variant filtering, annotation, target coverage metrics, and automated QC worksheet generation.
 
-> **Not implemented:** CNV, fusion, MSI, and TMB analysis.
+> **Not implemented:** CNV, fusion, MSI, TMB, matched tumor-normal analysis, and germline variant analysis.
 
 ---
 
